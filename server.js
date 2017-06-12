@@ -25,11 +25,9 @@ app.get('/:dateparam', function (req, res) {
     } 
     
     d = new Date(param);
-
-    console.log('Request param ' + req.params.dateparam);
     if (typeof d === 'object' && !isNaN(d.getTime())) {
         res.json({
-            'unix': d.getTime(),
+            'unix': d.getTime() / 1000,
             'natural': months[d.getMonth()] + ' ' + d.getDate() +', ' + d.getFullYear()
         });
     } else {
